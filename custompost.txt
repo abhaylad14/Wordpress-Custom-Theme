@@ -1,0 +1,27 @@
+ <!-- custom posts -->
+      <div class="row">
+        <?php 
+          $wpcustom = array(
+            'post_type' => 'mycustompost',
+            'post_status' => 'publish' 
+          );
+          $query = new WP_Query($wpcustom);
+          while($query->have_posts()){
+            the_post();
+        ?>
+        <div class="card col my-2 mx-3">
+      <div class="card-body">
+      <?php
+      $imgpath = wp_get_attachment_image_src( get_post_thumbnail_id()); 
+      if($imgpath){
+        echo "<img class='img-fluid' src='$imgpath[0]' alt=''>";
+      }
+      ?>
+      <h5 class="card-title mt-3"><?php the_title(); ?></h5>
+       <p><?php the_excerpt(); ?></p>
+       <p><?php echo get_the_date(); ?></p>
+        <a href="<?php the_permalink(); ?>"><input class="btn btn-primary btn-sm" type="button" value="Read More" /></a>
+      </div>
+    </div>
+        <?php } ?>
+      </div>
