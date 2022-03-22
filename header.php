@@ -52,7 +52,7 @@
           $logoimg = get_header_image();
         ?>
         <img src="<?php echo $logoimg; ?>" alt="">
-        <span>FlexStart</span>
+        <span><?php bloginfo( 'name' ); ?></span>
       </a>
 
       <nav id="navbar" class="navbar">
